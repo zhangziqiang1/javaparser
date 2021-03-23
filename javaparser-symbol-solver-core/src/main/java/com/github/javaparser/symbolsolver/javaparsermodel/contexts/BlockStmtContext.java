@@ -94,7 +94,7 @@ public class BlockStmtContext extends AbstractJavaParserContext<BlockStmt> {
 
             List<VariableDeclarator> variableDeclarators = new LinkedList<>();
             // find all variable declarators exposed in child
-            wrappedNode.getStatements().forEach(stmt -> variableDeclarators.addAll(localVariablesExposedToChild(stmt)));
+            wrappedNode.getStatements().forEach(stmt -> variableDeclarators.addAll(localVariablesDeclaredIn(stmt)));
             if (!variableDeclarators.isEmpty()) {
                 // FIXME: Work backwards from the current statement, to only consider declarations prior to this statement.
                 for (VariableDeclarator vd : variableDeclarators) {
